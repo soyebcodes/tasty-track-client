@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import auth from "../firebase/firebase.config";
 import { AuthContext } from "./AuthContext";
 
@@ -20,6 +20,11 @@ const AuthProvider = ({ children }) => {
     return unsubscribe;
   }, []);
 
+  const logoutUser = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -30,6 +35,7 @@ const AuthProvider = ({ children }) => {
 
   const authInfo = {
     user,
+    logoutUser,
     loading,
     setUser,
     setLoading,

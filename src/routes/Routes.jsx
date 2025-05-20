@@ -22,6 +22,19 @@ const router = createBrowserRouter([
         path: "/login",
         element: <Login />,
       },
+      {
+        path: "/all-recipes",
+        element: <h2>All Recipes</h2>,
+      },
+
+      {
+        path: "/add-recipe",
+        element: <h2>add Recipes</h2>,
+      },
+      {
+        path: "/my-recipes",
+        element: <h2>My Recipes</h2>,
+      },
     ],
   },
 ]);
