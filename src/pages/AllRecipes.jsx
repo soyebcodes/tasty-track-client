@@ -93,7 +93,7 @@ const AllRecipes = () => {
                   Cuisine: {recipe.cuisineType}
                 </p>
                 <p className="text-sm text-gray-600">
-                  Prep Time: {recipe.preparationTime} mins
+                  Prep Time: {recipe.prepTime} mins
                 </p>
 
                 <div className="card-actions justify-end mt-2">
