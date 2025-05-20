@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <>
       {/* Banner */}
-      <section className="w-11/12 mx-auto">
+      <section className="w-11/12 my-4 mx-auto">
         <Banner />
       </section>
 

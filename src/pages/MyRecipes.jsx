@@ -3,11 +3,14 @@ import { Bounce, Fade } from "react-awesome-reveal";
 import Swal from "sweetalert2";
 import { AuthContext } from "../context/AuthContext";
 import { Link } from "react-router";
+import UpdateRecipeModal from "./UpdateRecipeModal";
 
 const MyRecipes = () => {
   const { user } = useContext(AuthContext);
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [editingRecipe, setEditingRecipe] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const fetchMyRecipes = async () => {
     try {
@@ -26,6 +29,11 @@ const MyRecipes = () => {
   useEffect(() => {
     if (user?.email) fetchMyRecipes();
   }, [user]);
+
+  const handleEditClick = (recipe) => {
+    setEditingRecipe(recipe);
+    setModalOpen(true);
+  };
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -121,13 +129,19 @@ const MyRecipes = () => {
                   <strong>Cuisine:</strong> {recipe.cuisineType}
                 </p>
                 <p>
-                  <strong>Prep Time:</strong> {recipe.prepTime} mins
+                  <strong>Prep Time:</strong> {recipe.preparationTime} mins
                 </p>
                 <p>
                   <strong>Likes:</strong> {recipe.likeCount || 0}
                 </p>
                 <div className="flex justify-end gap-2 mt-4">
-                  <button className="btn btn-sm btn-info">Update</button>
+                  <button
+                    onClick={() => handleEditClick(recipe)}
+                    className="btn btn-sm btn-primary"
+                  >
+                    Edit
+                  </button>
+
                   <button
                     className="btn btn-sm btn-error"
                     onClick={() => handleDelete(recipe._id)}
@@ -139,12 +153,25 @@ const MyRecipes = () => {
             </div>
           ))}
         </div>
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center mt-12">
           <button className="btn btn-primary">
             <Link to="/add-recipe">Add New Recipe</Link>
           </button>
         </div>
       </Fade>
+      {modalOpen && editingRecipe && (
+        <UpdateRecipeModal
+          recipe={editingRecipe}
+          onClose={() => setModalOpen(false)}
+          onUpdate={(updatedRecipe) => {
+            setRecipes((prev) =>
+              prev.map((r) =>
+                r._id === updatedRecipe._id ? { ...r, ...updatedRecipe } : r
+              )
+            );
+          }}
+        />
+      )}
     </div>
   );
 };

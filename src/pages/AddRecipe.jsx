@@ -64,9 +64,13 @@ const AddRecipe = () => {
     }
   };
 
+  const category = ["Breakfast", "Lunch", "Dinner", "Dessert", "Vegan"];
+
   return (
-    <div className="max-w-3xl mx-auto p-6 shadow rounded my-10">
-      <h2 className="text-2xl font-bold mb-4 text-center">Add a New Recipe</h2>
+    <div className="max-w-3xl mx-auto p-6 shadow rounded my-12">
+      <h2 className="text-2xl font-bold mb-8 text-center mt-6 text-lime-500 ">
+        Add a New Recipe
+      </h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
@@ -121,9 +125,9 @@ const AddRecipe = () => {
         />
 
         <div>
-          <label className="font-semibold block mb-1">Categories</label>
+          <label className="font-semibold block mb-4">Categories</label>
           <div className="flex flex-wrap gap-3">
-            {["Breakfast", "Lunch", "Dinner", "Dessert", "Vegan"].map((cat) => (
+            {category.map((cat) => (
               <label key={cat} className="label cursor-pointer gap-2">
                 <input
                   type="checkbox"
@@ -137,7 +141,7 @@ const AddRecipe = () => {
           </div>
         </div>
 
-        <button type="submit" className="btn btn-primary w-full">
+        <button type="submit" className="btn btn-primary w-full my-6">
           Add Recipe
         </button>
       </form>

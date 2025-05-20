@@ -23,7 +23,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-amber-100 text-gray-800 shadow-md px-4 font-medium">
+    <div className="navbar bg-white w-11/12 mx-auto text-gray-800 px-4 font-medium">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -47,22 +47,50 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <NavLink to="/">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-orange-600 font-semibold underline"
+                    : "hover:text-orange-500"
+                }
+              >
                 <FaHome className="mr-2" /> Home
               </NavLink>
             </li>
             <li>
-              <NavLink to="/all-recipes">
+              <NavLink
+                to="/all-recipes"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-orange-600 font-semibold underline"
+                    : "hover:text-orange-500"
+                }
+              >
                 <FaListUl className="mr-2" /> All Recipes
               </NavLink>
             </li>
             <li>
-              <NavLink to="/add-recipe">
+              <NavLink
+                to="/add-recipe"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-orange-600 font-semibold underline"
+                    : "hover:text-orange-500"
+                }
+              >
                 <FaPlus className="mr-2" /> Add Recipe
               </NavLink>
             </li>
             <li>
-              <NavLink to="/my-recipes">
+              <NavLink
+                to="/my-recipes"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-orange-600 font-semibold underline"
+                    : "hover:text-orange-500"
+                }
+              >
                 <FaUtensils className="mr-2" /> My Recipes
               </NavLink>
             </li>
@@ -82,22 +110,50 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-3">
           <li>
-            <NavLink to="/" className="hover:text-orange-500">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-orange-600 font-semibold underline"
+                  : "hover:text-orange-500"
+              }
+            >
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/all-recipes" className="hover:text-orange-500">
+            <NavLink
+              to="/all-recipes"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-orange-600 font-semibold underline"
+                  : "hover:text-orange-500"
+              }
+            >
               All Recipes
             </NavLink>
           </li>
           <li>
-            <NavLink to="/add-recipe" className="hover:text-orange-500">
+            <NavLink
+              to="/add-recipe"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-orange-600 font-semibold underline"
+                  : "hover:text-orange-500"
+              }
+            >
               Add Recipe
             </NavLink>
           </li>
           <li>
-            <NavLink to="/my-recipes" className="hover:text-orange-500">
+            <NavLink
+              to="/my-recipes"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-orange-600 font-semibold underline"
+                  : "hover:text-orange-500"
+              }
+            >
               My Recipes
             </NavLink>
           </li>
@@ -131,7 +187,11 @@ const Navbar = () => {
         ) : (
           <NavLink
             to="/login"
-            className="btn btn-md bg-amber-600 text-white hover:bg-amber-700"
+            className={({ isActive }) =>
+              isActive
+                ? "btn btn-md bg-amber-700 text-white"
+                : "btn btn-md bg-amber-600 text-white hover:bg-amber-700"
+            }
           >
             Login
           </NavLink>

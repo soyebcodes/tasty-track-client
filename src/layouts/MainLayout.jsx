@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 const MainLayout = () => {
   return (
     <div>
-      <header className="w-11/12 mx-auto">
+      <header className=" mx-auto">
         <Navbar />
       </header>
       <Suspense fallback={<div>Loading...</div>}>
