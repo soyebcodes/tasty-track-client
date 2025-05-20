@@ -5,6 +5,10 @@ import Register from "../pages/Register";
 import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
 import RecipeDetails from "../pages/RecipeDetails";
+import PrivateRoute from "./PrivateRoute";
+import AddRecipe from "../pages/AddRecipe";
+import MyRecipes from "../pages/MyRecipes";
+import PublicRoute from "./PublicRoute";
 
 const router = createBrowserRouter([
   {
@@ -18,15 +22,27 @@ const router = createBrowserRouter([
       },
       {
         path: "/register",
-        element: <Register />,
+        element: (
+          <PublicRoute>
+            <Register />
+          </PublicRoute>
+        ),
       },
       {
         path: "/login",
-        element: <Login />,
+        element: (
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        ),
       },
       {
         path: "/recipes/:id",
-        element: <RecipeDetails />,
+        element: (
+          <PrivateRoute>
+            <RecipeDetails />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/all-recipes",
@@ -35,11 +51,19 @@ const router = createBrowserRouter([
 
       {
         path: "/add-recipe",
-        element: <h2>add Recipes</h2>,
+        element: (
+          <PrivateRoute>
+            <AddRecipe />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-recipes",
-        element: <h2>My Recipes</h2>,
+        element: (
+          <PrivateRoute>
+            <MyRecipes />
+          </PrivateRoute>
+        ),
       },
     ],
   },
