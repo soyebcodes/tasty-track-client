@@ -1,12 +1,50 @@
-# React + Vite
+# 🥘 Savor Book App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack Recipe Book application where users can explore, add, and manage their favorite recipes. Built with **React**, **Vite**, **Tailwind CSS**, **DaisyUI**, **Firebase Authentication**, **Express.js**, and **MongoDB**.
 
-Currently, two official plugins are available:
+## 📸 Savor Book
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[Live Site](https://savor-book.netlify.app/)
 
-## Expanding the ESLint configuration
+## ![Recipe Book App Screenshot](public/preview.png)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features
+
+- 🔐 Firebase Authentication (Login & Register)
+- 🧑 Protected Routes with Auth Context
+- 🍲 Add, View, Edit, and Delete Recipes
+- ❤️ Like Recipes (with like count)
+- 🌟 Top Recipes Section (based on likes)
+- 📜 Wishlist for favorited recipes
+- 🎨 Modern UI with Tailwind CSS & DaisyUI
+- 🧙‍♀️ Smooth animations with `react-awesome-reveal`
+- 🍽️ Responsive design for all devices
+
+---
+
+## 🧑‍💻 Tech Stack
+
+**Frontend**:
+
+- React + Vite
+- Tailwind CSS + DaisyUI
+- React Router v7
+- Firebase Auth
+- SweetAlert2
+- React Awesome Reveal
+
+**Backend**:
+
+- Node.js + Express.js
+- MongoDB (No Mongoose)
+
+---
+
+## 🔧 Installation & Setup
+
+### 📁 Clone the repository
+
+```bash
+git clone https://github.com/your-username/recipe-book-app.git
+cd recipe-book-app
+```
