@@ -35,11 +35,14 @@ const AddRecipe = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:5000/add-recipe", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(newRecipe),
-      });
+      const res = await fetch(
+        "https://savor-book-server.onrender.com/add-recipe",
+        {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(newRecipe),
+        }
+      );
 
       const data = await res.json();
       if (data.insertedId || data.acknowledged) {

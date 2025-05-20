@@ -10,7 +10,7 @@ const AllRecipes = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/recipes")
+    fetch("https://savor-book-server.onrender.com/recipes")
       .then((res) => res.json())
       .then((data) => {
         setRecipes(data);

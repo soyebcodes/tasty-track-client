@@ -12,7 +12,7 @@ const RecipeDetails = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/recipes/${id}`)
+    fetch(`https://savor-book-server.onrender.com/recipes/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setRecipe(data);
@@ -31,7 +31,7 @@ const RecipeDetails = () => {
       return;
     }
 
-    fetch(`http://localhost:5000/recipes/like/${id}`, {
+    fetch(`https://savor-book-server.onrender.com/recipes/like/${id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())

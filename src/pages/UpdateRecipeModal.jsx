@@ -31,7 +31,7 @@ const UpdateRecipeModal = ({ recipe, onClose, onUpdate }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:5000/my-recipes/${_id}`, {
+    fetch(`https://savor-book-server.onrender.com/my-recipes/${_id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),

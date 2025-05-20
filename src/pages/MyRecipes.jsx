@@ -15,7 +15,7 @@ const MyRecipes = () => {
   const fetchMyRecipes = async () => {
     try {
       const res = await fetch(
-        `http://localhost:5000/my-recipes?email=${user.email}`
+        `https://savor-book-server.onrender.com/my-recipes?email=${user.email}`
       );
       const data = await res.json();
       setRecipes(data);
@@ -46,7 +46,7 @@ const MyRecipes = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/my-recipes/${id}`, {
+        fetch(`https://savor-book-server.onrender.com/my-recipes/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

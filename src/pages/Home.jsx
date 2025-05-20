@@ -12,7 +12,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/top-recipes")
+    fetch("https://savor-book-server.onrender.com/top-recipes")
       .then((res) => res.json())
       .then((data) => setTopRecipes(data))
       .catch((err) => console.error(err));
