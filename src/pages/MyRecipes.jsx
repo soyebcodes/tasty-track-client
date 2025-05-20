@@ -2,37 +2,70 @@ import React, { useContext, useEffect, useState } from "react";
 import { Bounce, Fade } from "react-awesome-reveal";
 import Swal from "sweetalert2";
 import { AuthContext } from "../context/AuthContext";
+import { Link } from "react-router";
 
 const MyRecipes = () => {
   const { user } = useContext(AuthContext);
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const fetchMyRecipes = async () => {
+    try {
+      const res = await fetch(
+        `http://localhost:5000/my-recipes?email=${user.email}`
+      );
+      const data = await res.json();
+      setRecipes(data);
+    } catch (error) {
+      Swal.fire("Error", "Failed to fetch your recipes", "error");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    if (!user?.email) return;
-
-    const fetchRecipes = async () => {
-      try {
-        const res = await fetch(
-          `http://localhost:5000/my-recipes?email=${user.email}`
-        );
-        if (!res.ok) throw new Error("Failed to fetch");
-        const data = await res.json();
-        setRecipes(data);
-      } catch (error) {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Failed to load your recipes!",
-          error,
-        });
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchRecipes();
+    if (user?.email) fetchMyRecipes();
   }, [user]);
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/my-recipes/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (
+              data.deletedCount > 0 ||
+              data.message === "Recipe deleted successfully!"
+            ) {
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Recipe deleted successfully",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+
+              setRecipes((prevRecipes) =>
+                prevRecipes.filter((recipe) => recipe._id !== id)
+              );
+            }
+          })
+          .catch(() => {
+            Swal.fire("Error", "Failed to delete recipe", "error");
+          });
+      }
+    });
+  };
 
   if (loading) {
     return (
@@ -45,7 +78,7 @@ const MyRecipes = () => {
   if (recipes.length === 0) {
     return (
       <Bounce cascade damping={0.1}>
-        <div className="flex flex-col items-center text-center text-red-500">
+        <div className="flex flex-col items-center text-center justify-center text-red-500 h-64 mt-12">
           <img
             src="https://cdn-icons-png.flaticon.com/512/706/706164.png"
             alt="Empty Plate"
@@ -65,7 +98,7 @@ const MyRecipes = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">
       <h2 className="text-3xl font-bold mb-12 text-center my-12 text-lime-600 ">
-        My Recipeies
+        My Recipes
       </h2>
 
       <Fade cascade damping={0.1} triggerOnce>
@@ -73,7 +106,7 @@ const MyRecipes = () => {
           {recipes.map((recipe) => (
             <div
               key={recipe._id}
-              className="card bg-base-100 shadow-md cursor-pointer hover:scale-105 hover:shadow-lg transition-transform duration-300"
+              className="card bg-base-100 shadow-md hover:scale-105 transition-transform duration-300"
             >
               <figure>
                 <img
@@ -84,18 +117,32 @@ const MyRecipes = () => {
               </figure>
               <div className="card-body">
                 <h3 className="card-title">{recipe.title}</h3>
-                <p className="text-sm text-gray-600">
+                <p>
                   <strong>Cuisine:</strong> {recipe.cuisineType}
                 </p>
-                <p className="text-sm text-gray-600">
+                <p>
                   <strong>Prep Time:</strong> {recipe.prepTime} mins
                 </p>
-                <p className="text-sm text-gray-600">
+                <p>
                   <strong>Likes:</strong> {recipe.likeCount || 0}
                 </p>
+                <div className="flex justify-end gap-2 mt-4">
+                  <button className="btn btn-sm btn-info">Update</button>
+                  <button
+                    className="btn btn-sm btn-error"
+                    onClick={() => handleDelete(recipe._id)}
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
           ))}
+        </div>
+        <div className="flex justify-center mt-8">
+          <button className="btn btn-primary">
+            <Link to="/add-recipe">Add New Recipe</Link>
+          </button>
         </div>
       </Fade>
     </div>
