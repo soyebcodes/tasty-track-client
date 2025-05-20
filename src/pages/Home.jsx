@@ -4,6 +4,9 @@ import { Link, useNavigate } from "react-router";
 import { FaHeart } from "react-icons/fa";
 import { Fade, Slide } from "react-awesome-reveal";
 
+import TestimonialSection from "./TestimonialSection ";
+import WhyChooseUs from "./WhyChooseUs";
+
 const Home = () => {
   const [topRecipes, setTopRecipes] = useState([]);
   const navigate = useNavigate();
@@ -68,40 +71,10 @@ const Home = () => {
           </button>
         </div>
       </div>
-      {/* Cooking tipes */}
-      <div className="bg-base-200 py-10">
-        <Slide direction="left">
-          <div className="w-11/12 mx-auto text-center">
-            <h2 className="text-2xl font-semibold mb-4">
-              🔥 Quick Cooking Tips
-            </h2>
-            <p className="text-gray-600">
-              Use fresh ingredients, season generously, and never underestimate
-              the power of herbs! A pinch of love goes a long way.
-            </p>
-          </div>
-        </Slide>
-      </div>
+      {/* Cooking inspiration */}
+      <WhyChooseUs />
       {/* Newsletter */}
-      <div className="py-14 bg-gradient-to-r from-yellow-100 to-pink-100">
-        <Fade direction="up" triggerOnce>
-          <div className="w-11/12 mx-auto text-center">
-            <h2 className="text-2xl font-bold mb-3">
-              📬 Join Our Foodie Newsletter
-            </h2>
-            <p className="mb-4">
-              Stay updated with new recipes, food tips, and exclusive offers.
-            </p>
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="input input-bordered w-full max-w-sm mb-3"
-            />
-            <br />
-            <button className="btn btn-secondary">Subscribe</button>
-          </div>
-        </Fade>
-      </div>
+      <TestimonialSection />
     </>
   );
 };

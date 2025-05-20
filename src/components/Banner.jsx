@@ -4,7 +4,7 @@ import { Typewriter } from "react-simple-typewriter";
 const Banner = () => {
   return (
     <section
-      className="relative flex items-center justify-center h-64 md:h-96 bg-gradient-to-r from-yellow-400 via-red-400 to-pink-400 text-white px-6 text-center overflow-hidden rounded-lg shadow-lg"
+      className="relative flex items-center justify-center h-64 md:h-[400px] lg:h-[500px] bg-gradient-to-r from-yellow-400 via-red-400 to-pink-400 text-white px-6 text-center overflow-hidden rounded-lg shadow-lg"
       style={{
         backgroundImage:
           "url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1470&q=80')",
