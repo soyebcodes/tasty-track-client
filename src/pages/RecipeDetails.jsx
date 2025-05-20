@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-hot-toast";
+import { FaHeart } from "react-icons/fa";
 
 const RecipeDetails = () => {
   const { id } = useParams();
@@ -26,7 +27,7 @@ const RecipeDetails = () => {
 
   const handleLike = () => {
     if (user?.email === recipe?.authorEmail) {
-      toast.warn("You cant like your own recipe");
+      toast.error("You cannot like your own recipe");
       return;
     }
 
@@ -93,7 +94,7 @@ const RecipeDetails = () => {
           <div className="mt-4">
             <h2 className="font-bold mb-1">Ingredients:</h2>
             <ul className="list-disc ml-5 text-sm">
-              {recipe.ingredients?.map((item, index) => (
+              {recipe.ingredients.split(",").map((item, index) => (
                 <li key={index}>{item.trim()}</li>
               ))}
             </ul>
@@ -105,8 +106,8 @@ const RecipeDetails = () => {
           </div>
 
           <div className="mt-6 flex items-center justify-between">
-            <p className="text-lg font-semibold">
-              ❤️ Likes: {recipe.likeCount}
+            <p className="text-lg font-semibold flex items-center gap-3">
+              <FaHeart /> Likes: {recipe.likeCount}
             </p>
             <button onClick={handleLike} className="btn btn-secondary btn-sm">
               Like

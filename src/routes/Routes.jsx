@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import AddRecipe from "../pages/AddRecipe";
 import MyRecipes from "../pages/MyRecipes";
 import PublicRoute from "./PublicRoute";
+import AllRecipes from "../pages/AllRecipes";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/recipes/:id",
+
         element: (
           <PrivateRoute>
             <RecipeDetails />
@@ -46,7 +48,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/all-recipes",
-        element: <h2>All Recipes</h2>,
+        Component: AllRecipes,
       },
 
       {
