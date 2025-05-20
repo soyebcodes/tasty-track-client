@@ -45,13 +45,13 @@ const RecipeDetails = () => {
       .catch(() => toast.error("Failed to like recipe"));
   };
 
-  // if (loading) {
-  //   return (
-  //     <div className="text-center py-20">
-  //       <span className="loading loading-bars loading-lg"></span>
-  //     </div>
-  //   );
-  // }
+  if (loading) {
+    return (
+      <div className="text-center py-20">
+        <span className="loading loading-bars loading-lg"></span>
+      </div>
+    );
+  }
 
   if (!recipe) {
     return (

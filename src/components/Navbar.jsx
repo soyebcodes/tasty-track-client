@@ -73,8 +73,8 @@ const Navbar = () => {
           className="text-2xl font-bold flex items-center gap-2 text-amber-700"
         >
           <FaUtensils className="text-3xl text-red-500" />
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-orange-400">
-            RecipeNest
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-yellow-600 to-orange-400">
+            Savor Food
           </span>
         </NavLink>
       </div>
@@ -118,12 +118,12 @@ const Navbar = () => {
                   className="w-10 h-10 rounded-full ring-2 ring-orange-400"
                 />
               ) : (
-                <FaUserCircle className="text-3xl text-orange-600" />
+                <FaUserCircle className="text-3xl text-orange-400" />
               )}
             </div>
             <button
               onClick={handleLogout}
-              className="btn btn-sm bg-red-500 text-white hover:bg-red-600"
+              className="btn btn-md bg-red-600 text-white hover:bg-red-700"
             >
               Logout
             </button>
@@ -131,7 +131,7 @@ const Navbar = () => {
         ) : (
           <NavLink
             to="/login"
-            className="btn btn-sm bg-green-500 text-white hover:bg-green-600"
+            className="btn btn-md bg-amber-600 text-white hover:bg-amber-700"
           >
             Login
           </NavLink>
