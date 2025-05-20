@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.config";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const [error, setError] = useState("");
@@ -32,7 +33,7 @@ const Register = () => {
           displayName: name,
           photoURL: photoURL,
         }).then(() => {
-          Swal.fire("Success!", "User registered successfully", "success");
+          toast.success("User registration successful!");
           form.reset();
           navigate("/");
         });
@@ -41,8 +42,10 @@ const Register = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6">
-      <h2 className="text-2xl font-bold mb-4 text-center">Register</h2>
+    <div className="max-w-md mx-auto p-6 mt-24">
+      <h2 className="text-2xl font-bold text-center text-primary mb-12">
+        Register to Savor Book
+      </h2>
       <form onSubmit={handleRegister} className="space-y-4">
         <input
           type="text"
@@ -83,7 +86,7 @@ const Register = () => {
 
       <p className="mt-4 text-sm text-center">
         Already have an account?
-        <Link to="/login" className="text-blue-600">
+        <Link to="/login" className="text-blue-600 ml-2">
           Login
         </Link>
       </p>
