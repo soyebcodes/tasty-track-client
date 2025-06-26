@@ -1,13 +1,13 @@
 import React, { useContext, useRef, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 import {
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
-import auth from "../firebase/firebase.config";
+import auth from "../../firebase/firebase.config";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 

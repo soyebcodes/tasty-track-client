@@ -1,15 +1,15 @@
 import { createBrowserRouter } from "react-router";
 import MainLayout from "../layouts/MainLayout";
-import Home from "../pages/Home";
-import Register from "../pages/Register";
-import Login from "../pages/Login";
-import NotFound from "../pages/NotFound";
-import RecipeDetails from "../pages/RecipeDetails";
-import PrivateRoute from "./PrivateRoute";
-import AddRecipe from "../pages/AddRecipe";
-import MyRecipes from "../pages/MyRecipes";
-import PublicRoute from "./PublicRoute";
-import AllRecipes from "../pages/AllRecipes";
+import Home from "../pages/Home/Home/Home";
+import Register from "../pages/Register/Register";
+import Login from "../pages/Login/Login";
+import NotFound from "../pages/Shared/NotFound/NotFound";
+import RecipeDetails from "../pages/RecipeDetails/RecipeDetails";
+import PrivateRoute from "../Routes/PrivateRoute";
+import AddRecipe from "../pages/AddRecipe/AddRecipe";
+import MyRecipes from "../pages/MyRecipes/MyRecipes";
+import PublicRoute from "../Routes/PublicRoute";
+import AllRecipes from "../pages/AllRecipes/AllRecipes";
 
 const router = createBrowserRouter([
   {

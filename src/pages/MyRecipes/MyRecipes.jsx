@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Bounce, Fade } from "react-awesome-reveal";
 import Swal from "sweetalert2";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router";
 import UpdateRecipeModal from "./UpdateRecipeModal";
 

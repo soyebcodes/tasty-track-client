@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Banner from "../components/Banner";
+import Banner from "../Banner/Banner";
 import { Link, useNavigate } from "react-router";
 import { FaHeart } from "react-icons/fa";
 import { Fade, Slide } from "react-awesome-reveal";
 
-import TestimonialSection from "./TestimonialSection ";
-import WhyChooseUs from "./WhyChooseUs";
+import TestimonialSection from "../Testimonial/TestimonialSection ";
+import WhyChooseUs from "../WhyChoseUS/WhyChooseUs";
 
 const Home = () => {
   const [topRecipes, setTopRecipes] = useState([]);
