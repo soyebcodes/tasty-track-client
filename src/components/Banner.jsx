@@ -16,7 +16,7 @@ const Banner = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-red-400 to-pink-400 opacity-70 rounded-lg"></div>
       <div className="relative z-10 max-w-3xl">
         <h1 className="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow-lg">
-          Welcome to Savor Book!
+          Welcome to Tasty Track!
         </h1>
         <p className="text-lg md:text-xl font-semibold drop-shadow-md">
           <Typewriter

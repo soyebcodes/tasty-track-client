@@ -41,7 +41,7 @@ const Navbar = () => {
       : "text-base-content hover:text-orange-500";
 
   return (
-    <div className="navbar w-11/12 mx-auto px-4 font-medium bg-base-100 text-base-content">
+    <div className="navbar w-11/12 mx-auto px-4 font-medium bg-base-100 text-base-content sticky">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

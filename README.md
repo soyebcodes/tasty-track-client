@@ -1,8 +1,8 @@
-# 🥘 Savor Book App
+# 🥘 Tasty Track App
 
 A full-stack Recipe Book application where users can explore, add, and manage their favorite recipes. Built with **React**, **Vite**, **Tailwind CSS**, **DaisyUI**, **Firebase Authentication**, **Express.js**, and **MongoDB**.
 
-## 📸 Savor Book
+## 📸 Tasty Track
 
 [Live Site](https://savor-book.netlify.app/)
 
