@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router";
+
 import { Bounce } from "react-awesome-reveal";
+import RecipeCard from "./RecipeCard";
 
 const AllRecipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -8,6 +9,8 @@ const AllRecipes = () => {
   const [cuisine, setCuisine] = useState("");
   const [sortOrder, setSortOrder] = useState("");
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
 
   useEffect(() => {
     fetch("https://savor-book-server.onrender.com/recipes")
@@ -49,6 +52,18 @@ const AllRecipes = () => {
     }
 
     setFiltered(filteredList);
+  };
+
+  // Pagination
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentRecipes = filtered.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(filtered.length / itemsPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    if (pageNumber >= 1 && pageNumber <= totalPages) {
+      setCurrentPage(pageNumber);
+    }
   };
 
   return (
@@ -107,38 +122,49 @@ const AllRecipes = () => {
           </div>
         </Bounce>
       ) : (
-        // recipe card
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {filtered.map((recipe) => (
-            <div key={recipe._id} className="card bg-base-100 shadow-md">
-              <figure>
-                <img
-                  src={recipe.image || "https://via.placeholder.com/300x200"}
-                  alt={recipe.title}
-                  className="h-48 w-full object-cover"
-                />
-              </figure>
-              <div className="card-body">
-                <h3 className="card-title text-lg">{recipe.title}</h3>
-                <p className="text-sm text-gray-600">
-                  Cuisine: {recipe.cuisineType}
-                </p>
-                <p className="text-sm text-gray-600">
-                  Prep Time: {recipe.prepTime} mins
-                </p>
+        <>
+          {/*  recipe card */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {currentRecipes.map((recipe) => (
+              <RecipeCard key={recipe._id} recipe={recipe} />
+            ))}
+          </div>
 
-                <div className="card-actions justify-end mt-2">
-                  <Link
-                    to={`/recipes/${recipe._id}`}
-                    className="btn btn-sm btn-primary"
-                  >
-                    See Details
-                  </Link>
-                </div>
-              </div>
+          {/* Pagination */}
+          <div className="flex justify-center mt-10">
+            <div className="join">
+              <button
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+                className="join-item btn btn-sm"
+              >
+                «
+              </button>
+
+              {[...Array(totalPages).keys()].map((num) => (
+                <button
+                  key={num}
+                  onClick={() => handlePageChange(num + 1)}
+                  className={`join-item btn btn-sm ${
+                    currentPage === num + 1 ? "btn-primary" : ""
+                  }`}
+                >
+                  {num + 1}
+                </button>
+              ))}
+
+              <button
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className="join-item btn btn-sm"
+              >
+                »
+              </button>
             </div>
-          ))}
-        </div>
+          </div>
+        </>
+
+        // Pagination
       )}
     </div>
   );
