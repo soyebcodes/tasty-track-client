@@ -12,6 +12,9 @@ import PublicRoute from "../Routes/PublicRoute";
 import AllRecipes from "../pages/AllRecipes/AllRecipes";
 import Overview from "../pages/Dashboard/OverView";
 import DashboardLayout from "../pages/Dashboard/DashboardLayout";
+import About from "../pages/About/About";
+import Contact from "../pages/Contact/Contact";
+import Support from "../pages/Support/Support";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +54,18 @@ const router = createBrowserRouter([
       {
         path: "/all-recipes",
         Component: AllRecipes,
+      },
+      {
+        path: "/about",
+        Component: About,
+      },
+      {
+        path: "/contact",
+        Component: Contact,
+      },
+      {
+        path: "/support",
+        Component: Support,
       },
 
       {
