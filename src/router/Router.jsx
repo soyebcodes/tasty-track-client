@@ -10,6 +10,8 @@ import AddRecipe from "../pages/AddRecipe/AddRecipe";
 import MyRecipes from "../pages/MyRecipes/MyRecipes";
 import PublicRoute from "../Routes/PublicRoute";
 import AllRecipes from "../pages/AllRecipes/AllRecipes";
+import Overview from "../pages/Dashboard/OverView";
+import DashboardLayout from "../pages/Dashboard/DashboardLayout";
 
 const router = createBrowserRouter([
   {
@@ -66,6 +68,32 @@ const router = createBrowserRouter([
             <MyRecipes />
           </PrivateRoute>
         ),
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        index: true, // default: /dashboard
+        element: <Overview />,
+      },
+      {
+        path: "all-recipes",
+        element: <AllRecipes />,
+      },
+      {
+        path: "my-recipes",
+        element: <MyRecipes />,
+      },
+      {
+        path: "add-recipe",
+        element: <AddRecipe />,
       },
     ],
   },

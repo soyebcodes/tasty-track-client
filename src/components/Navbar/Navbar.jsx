@@ -93,6 +93,13 @@ const Navbar = () => {
                 <FaLifeRing className="mr-2" /> Support
               </NavLink>
             </li>
+            {user && (
+              <li>
+                <NavLink to="/dashboard" className={linkClass}>
+                  <FaUserCircle className="mr-2" /> Dashboard
+                </NavLink>
+              </li>
+            )}
           </ul>
         </div>
 
@@ -146,6 +153,13 @@ const Navbar = () => {
               Support
             </NavLink>
           </li>
+          {user && (
+            <li>
+              <NavLink to="/dashboard" className={linkClass}>
+                Dashboard
+              </NavLink>
+            </li>
+          )}
         </ul>
       </div>
 
