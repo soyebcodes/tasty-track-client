@@ -43,7 +43,7 @@ const Navbar = () => {
       : "text-base-content hover:text-orange-500";
 
   return (
-    <div className="navbar w-11/12 mx-auto px-4 bg-base-100 text-base-content sticky top-0 z-50 shadow-md font-medium">
+    <div className="navbar w-11/12 mx-auto px-4 text-base-content font-medium">
       {/* Left: Logo + Mobile Nav */}
       <div className="navbar-start">
         {/* Mobile dropdown */}
