@@ -110,55 +110,54 @@ const MyRecipes = () => {
       </h2>
 
       <Fade cascade damping={0.1} triggerOnce>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 ">
-          {recipes.map((recipe) => (
-            <div
-              key={recipe._id}
-              className="card bg-base-100 shadow-md hover:scale-105 transition-transform duration-300"
-            >
-              <figure>
-                <img
-                  src={recipe.image || "https://via.placeholder.com/300x200"}
-                  alt={recipe.title}
-                  className="h-48 w-full object-cover rounded-t"
-                />
-              </figure>
-              <div className="card-body">
-                <h3 className="card-title">{recipe.title}</h3>
-                <p>
-                  <strong>Cuisine:</strong> {recipe.cuisineType}
-                </p>
-                <p>
-                  <strong>Prep Time:</strong> {recipe.preparationTime} mins
-                </p>
-                <p>
-                  <strong>Likes:</strong> {recipe.likeCount || 0}
-                </p>
-                <div className="flex justify-end gap-2 mt-4">
-                  <button
-                    onClick={() => handleEditClick(recipe)}
-                    className="btn btn-sm btn-primary"
-                  >
-                    Edit
-                  </button>
-
-                  <button
-                    className="btn btn-sm btn-error"
-                    onClick={() => handleDelete(recipe._id)}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
+        <div className="overflow-x-auto">
+          <table className="table w-full border border-gray-300 rounded-md">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="px-4 py-3 text-left">Title</th>
+                <th className="px-4 py-3 text-left">Cuisine</th>
+                <th className="px-4 py-3 text-left">Prep Time (mins)</th>
+                <th className="px-4 py-3 text-left">Likes</th>
+                <th className="px-4 py-3 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {recipes.map((recipe) => (
+                <tr
+                  key={recipe._id}
+                  className="hover:bg-gray-50 transition-colors duration-150"
+                >
+                  <td className="px-4 py-3">{recipe.title}</td>
+                  <td className="px-4 py-3">{recipe.cuisineType}</td>
+                  <td className="px-4 py-3">{recipe.preparationTime}</td>
+                  <td className="px-4 py-3">{recipe.likeCount || 0}</td>
+                  <td className="px-4 py-3 text-right space-x-2">
+                    <button
+                      onClick={() => handleEditClick(recipe)}
+                      className="btn btn-sm btn-primary"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleDelete(recipe._id)}
+                      className="btn btn-sm btn-error"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
+
         <div className="flex justify-center mt-12">
           <button className="btn btn-primary">
             <Link to="/add-recipe">Add New Recipe</Link>
           </button>
         </div>
       </Fade>
+
       {modalOpen && editingRecipe && (
         <UpdateRecipeModal
           recipe={editingRecipe}
