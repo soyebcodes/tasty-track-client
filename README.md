@@ -4,7 +4,7 @@ A full-stack Recipe Book application where users can explore, add, and manage th
 
 ## 📸 Tasty Track
 
-[Live Site](https://savor-book.netlify.app/)
+[Visit Site - Tasty Track](https://tastytrack-soyeb.netlify.app/)
 
 ## ![Recipe Book App Screenshot](public/preview.png)
 
