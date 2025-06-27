@@ -3,13 +3,16 @@ import { NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import {
   FaUserCircle,
-  FaUtensils,
   FaMoon,
   FaSun,
   FaHome,
-  FaPlus,
   FaListUl,
+  FaInfoCircle,
+  FaPhone,
+  FaLifeRing,
 } from "react-icons/fa";
+import logoLight from "../../assets/logo.png";
+import logoDark from "../../assets/logo-dark.png";
 
 const Navbar = () => {
   const { user, logoutUser } = useContext(AuthContext);
@@ -19,7 +22,6 @@ const Navbar = () => {
 
   const navigate = useNavigate();
 
-  // Theme toggle with DaisyUI
   useEffect(() => {
     const theme = isDark ? "dark" : "light";
     document.documentElement.setAttribute("data-theme", theme);
@@ -41,8 +43,10 @@ const Navbar = () => {
       : "text-base-content hover:text-orange-500";
 
   return (
-    <div className="navbar w-11/12 mx-auto px-4 font-medium bg-base-100 text-base-content sticky">
+    <div className="navbar w-11/12 mx-auto px-4 bg-base-100 text-base-content sticky top-0 z-50 shadow-md font-medium">
+      {/* Left: Logo + Mobile Nav */}
       <div className="navbar-start">
+        {/* Mobile dropdown */}
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
@@ -75,28 +79,46 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/add-recipe" className={linkClass}>
-                <FaPlus className="mr-2" /> Add Recipe
+              <NavLink to="/about" className={linkClass}>
+                <FaInfoCircle className="mr-2" /> About Us
               </NavLink>
             </li>
             <li>
-              <NavLink to="/my-recipes" className={linkClass}>
-                <FaUtensils className="mr-2" /> My Recipes
+              <NavLink to="/contact" className={linkClass}>
+                <FaPhone className="mr-2" /> Contact
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/support" className={linkClass}>
+                <FaLifeRing className="mr-2" /> Support
               </NavLink>
             </li>
           </ul>
         </div>
+
+        {/* Logo */}
         <NavLink
           to="/"
           className="text-2xl font-bold flex items-center gap-2 text-amber-700"
         >
-          <FaUtensils className="text-3xl text-red-500" />
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-yellow-600 to-orange-400">
-            Savor Food
-          </span>
+          {/* Light mode logo */}
+          <img
+            src={logoLight}
+            alt="logo"
+            className="w-24 h-24 block dark:hidden"
+          />
+
+          {/* Dark mode logo */}
+          <img
+            src={logoDark}
+            alt="logo"
+            className="w-24 h-24 hidden dark:block"
+          />
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-yellow-600 to-orange-400"></span>
         </NavLink>
       </div>
 
+      {/* Center: Large screen menu */}
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-3">
           <li>
@@ -110,20 +132,26 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/add-recipe" className={linkClass}>
-              Add Recipe
+            <NavLink to="/about" className={linkClass}>
+              About Us
             </NavLink>
           </li>
           <li>
-            <NavLink to="/my-recipes" className={linkClass}>
-              My Recipes
+            <NavLink to="/contact" className={linkClass}>
+              Contact
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/support" className={linkClass}>
+              Support
             </NavLink>
           </li>
         </ul>
       </div>
 
+      {/* Right: Theme + Auth */}
       <div className="navbar-end flex items-center gap-4">
-        {/* toggle them btn */}
+        {/* Theme toggle */}
         <button
           className="btn btn-sm btn-circle"
           onClick={() => setIsDark((prev) => !prev)}
@@ -132,6 +160,7 @@ const Navbar = () => {
           {isDark ? <FaSun className="text-yellow-400" /> : <FaMoon />}
         </button>
 
+        {/* Auth buttons */}
         {user ? (
           <div className="flex items-center gap-3">
             <div
