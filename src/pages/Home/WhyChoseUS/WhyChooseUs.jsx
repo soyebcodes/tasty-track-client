@@ -6,7 +6,7 @@ const WhyChooseUs = () => {
       <Fade cascade damping={0.2} triggerOnce>
         <div className="max-w-6xl mx-auto text-center mb-16">
           <h2 className="text-4xl font-extrabold text-amber-700 dark:text-amber-400 mb-4">
-            Why Choose Savor Food?
+            Why Choose Tasty Track?
           </h2>
           <p className="text-gray-700 dark:text-gray-300 max-w-3xl mx-auto text-lg">
             Discover the unique benefits that make our Recipe Book App your
